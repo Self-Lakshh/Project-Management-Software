@@ -1,0 +1,54 @@
+version: '3.8'
+
+services:
+  mongodb:
+    image: mongo:6.0
+    container_name: pms-prod-mongodb
+    restart: always
+    ports:
+      - "27017:27017"
+    volumes:
+      - prod-mongo-data:/data/db
+
+  redis:
+    image: redis:7.0-alpine
+    container_name: pms-prod-redis
+    restart: always
+    ports:
+      - "6379:6379"
+    volumes:
+      - prod-redis-data:/data
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: pms-prod-backend
+    restart: always
+    ports:
+      - "3000:3000"
+    environment:
+      - PORT=3000
+      - MONGO_URI=mongodb://mongodb:27017/pms
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+      - JWT_SECRET=pms_prod_secret_jwt_signature_signing_key_token
+      - JWT_REFRESH_SECRET=pms_prod_secret_jwt_refresh_token_signature_key
+    depends_on:
+      - mongodb
+      - redis
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: pms-prod-frontend
+    restart: always
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+
+volumes:
+  prod-mongo-data:
+  prod-redis-data:
