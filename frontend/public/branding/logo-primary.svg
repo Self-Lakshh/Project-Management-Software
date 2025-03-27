@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 80" width="320" height="80">
+  <defs>
+    <linearGradient id="pastelGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#CFC5E6" />
+      <stop offset="100%" stop-color="#D6E4F0" />
+    </linearGradient>
+  </defs>
+  <!-- Monogram Part -->
+  <g transform="translate(10, 10)">
+    <rect x="0" y="0" width="60" height="60" rx="16" fill="url(#pastelGrad)" />
+    <path d="M18 18 H32 C38 18 42 22 42 28 C42 34 38 38 32 38 H24 V46 M24 18 V46" 
+          stroke="#2D2D2D" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+    <path d="M32 38 H38 L44 46 M38 38 V46" 
+          stroke="#2D2D2D" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+  </g>
+  
+  <!-- Text Part -->
+  <text x="85" y="47" font-family="Outfit, Inter, sans-serif" font-size="28" font-weight="700" fill="#2D2D2D" letter-spacing="-0.5">PMS</text>
+  <text x="85" y="62" font-family="Inter, sans-serif" font-size="10" font-weight="500" fill="#63666A" letter-spacing="1">PROJECT MANAGEMENT</text>
+</svg>
